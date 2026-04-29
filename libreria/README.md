@@ -1,4 +1,4 @@
-# mi_crypto_lib 🔐
+# mi_crypto_lib 
 
 Biblioteca educativa de criptografía desarrollada en Python puro (sin dependencias externas).
 
