@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mi_crypto_lib"
+version = "1.0.1"
+description = "Biblioteca educativa de criptografia: teoria de numeros, cifrados clasicos y ataques"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+authors = [
+    {name = "Raul"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Security :: Cryptography",
+    "Intended Audience :: Education",
+]
+
+[project.urls]
+Homepage = "https://github.com/raul/mi_crypto_lib"
+
+[tool.setuptools.packages.find]
+include = ["mi_crypto_lib*"]
+
