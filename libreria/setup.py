@@ -7,7 +7,7 @@ long_description = (aqui / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="mi_crypto_lib",
-    version="1.0.1",
+    version="1.0.2",
     author="Raúl",
     description="Biblioteca de criptografía: teoría de números, cifrados clásicos y ataques",
     long_description=long_description,

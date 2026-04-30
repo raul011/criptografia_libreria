@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mi_crypto_lib"
-version = "1.0.1"
+version = "1.0.2"
 description = "Biblioteca educativa de criptografia: teoria de numeros, cifrados clasicos y ataques"
 readme = "README.md"
 license = { file = "LICENSE" }
