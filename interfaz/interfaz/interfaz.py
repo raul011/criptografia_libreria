@@ -188,10 +188,10 @@ def index() -> rx.Component:
         rx.vstack(
             rx.hstack(
                 rx.icon("lock", size=40, color="var(--accent-9)"),
-                rx.heading("Explorador Criptográfico", size="8", margin_bottom="2"),
+                rx.heading("Interfaz del proyecto de criptografía", size="8", margin_bottom="2"),
                 align_items="center"
             ),
-            rx.text("Proyecto 1 - Grupo 4", size="4", color="gray", margin_bottom="6"),
+            rx.text("Proyecto 1 - Grupo G", size="4", color="gray", margin_bottom="6"),
             
             tabs_layout(),
             
