@@ -10,6 +10,7 @@ class State(rx.State):
     # CRR
     n_crr: str = ""
     crr_elements: list[int] = []
+    crr_elements_str: str = ""
     crr_length: str = ""
     phi_theoretical: str = ""
     crr_verified: str = ""
@@ -41,12 +42,14 @@ class State(rx.State):
             phi_val = phi(n)
             
             self.crr_elements = elements
+            self.crr_elements_str = "{" + ", ".join(str(e) for e in elements) + "}"
             self.crr_length = str(len(elements))
             self.phi_theoretical = str(phi_val)
             self.crr_verified = " Coincide exactamente" if len(elements) == phi_val else "❌ No coincide"
         except ValueError:
             self.crr_verified = "Error: Ingrese un número válido."
             self.crr_elements = []
+            self.crr_elements_str = ""
             self.crr_length = ""
             self.phi_theoretical = ""
 
@@ -89,7 +92,7 @@ def crr_card():
             rx.divider(),
             rx.hstack(
                 rx.text("Elementos CRR(n): ", weight="bold"),
-                rx.code(State.crr_elements.to(str))
+                rx.code(State.crr_elements_str)
             ),
             rx.hstack(
                 rx.hstack(rx.text("Cantidad real: ", weight="bold"), rx.badge(State.crr_length, color_scheme="blue")),

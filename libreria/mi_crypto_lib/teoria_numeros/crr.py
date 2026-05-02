@@ -14,23 +14,6 @@ def crr(n):
     return [a for a in range(1, n) if mcd(a, n) == 1]
 
 
-def es_generador(g, n):
-
-    conjunto = crr(n)
-    generados = set()
-    potencia = 1
-    for _ in range(len(conjunto)):
-        potencia = (potencia * g) % n
-        generados.add(potencia)
-
-    return generados == set(conjunto)
-
-
-def encontrar_generadores(n):
-
-    return [g for g in crr(n) if es_generador(g, n)]
-
-
 def verificar_crr_phi(n):
     # Importación local para evitar posibles ciclos de importación
     from .phi import phi
