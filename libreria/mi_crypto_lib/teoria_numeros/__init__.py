@@ -9,6 +9,6 @@ Funciones principales:
     - inverso_extendido(a, n) : Inverso multiplicativo usando Euclides extendido
 """
 
-from .phi import phi, factorizar
+from .funciones_matematicas import phi, mcd
 from .crr import crr
-from .inversos import inverso_euler, inverso_extendido, mcd
+from .inversos import inverso_euler, inverso_multiplicativo as inverso_extendido

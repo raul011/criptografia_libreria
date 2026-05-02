@@ -1,11 +1,6 @@
 
-
-def mcd(a, b):
-    """Calcula el máximo común divisor usando el algoritmo de Euclides."""
-    while b:
-        a, b = b, a % b
-    return a
-
+from .funciones_matematicas.mcd import mcd
+from .funciones_matematicas.phi import phi
 
 def crr(n):
     if n < 2:
@@ -15,8 +10,7 @@ def crr(n):
 
 
 def verificar_crr_phi(n):
-    # Importación local para evitar posibles ciclos de importación
-    from .phi import phi
+
     
     elementos_crr = crr(n)
     valor_phi = phi(n)
