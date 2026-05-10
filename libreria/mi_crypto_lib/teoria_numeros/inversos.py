@@ -1,19 +1,12 @@
-"""
-Inversos multiplicativos modulo n.
-Dos metodos:
-  1. Teorema de Euler: a^phi(n)-1 mod n
-  2. Euclides extendido: ax + ny = mcd(a,n)
-"""
+# Inversos multiplicativos modulo n
+# Metodo 1: Teorema de Euler
+# Metodo 2: Euclides extendido
 
-from .funciones_matematicas.phi import phi
-from .funciones_matematicas.mcd import mcd
+from .utilidades import phi, mcd
 
 
 def inverso_multiplicativo(a, n):
-    """
-    Calcula el inverso usando el Algoritmo de Euclides Extendido.
-    Retorna diccionario con resultado o error.
-    """
+    """Inverso usando Euclides Extendido."""
     if mcd(a, n) != 1:
         return {"error": str(a) + " y " + str(n) + " no son coprimos, no existe inverso"}
 
@@ -36,10 +29,7 @@ def _euclides_extendido(a, b):
 
 
 def inverso_euler(a, n):
-    """
-    Calcula el inverso usando el Teorema de Euler:
-        a^(-1) = a^(phi(n)-1) mod n
-    """
+    """Inverso usando el Teorema de Euler: a^(phi(n)-1) mod n."""
     if mcd(a, n) != 1:
         return {"error": str(a) + " y " + str(n) + " no son coprimos"}
 

@@ -1,19 +1,6 @@
-"""
-Ejercicio Práctico: Cálculo de phi(n) usando primos seguros
-===========================================================
-"""
+# Calculo de phi(n) usando primos seguros
 
-def es_primo(n):
-    """Verifica si un número n es primo."""
-    if n < 2: return False
-    if n in (2, 3): return True
-    if n % 2 == 0 or n % 3 == 0: return False
-    i = 5
-    while i * i <= n:
-        if n % i == 0 or n % (i + 2) == 0:
-            return False
-        i += 6
-    return True
+from .utilidades import es_primo
 
 def generar_primo_seguro(inicio):
     """

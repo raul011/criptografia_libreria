@@ -1,10 +1,10 @@
 
 ALFABETO = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"  # 27 letras
 
+from ..teoria_numeros.utilidades import mcd
 
-# ============================================================
-#  UTILIDADES
-# ============================================================
+
+# --- utilidades del cifrado ---
 
 def limpiar_texto(texto):
     """Filtra solo letras del alfabeto español de 27 letras."""
@@ -29,9 +29,7 @@ def devolver_letra(numero):
     return ALFABETO[numero % 27]
 
 
-# ============================================================
-#  VIGENÈRE CLÁSICO
-# ============================================================
+# --- vigenere clasico ---
 
 def vigenere_clasico(texto, clave, modo="cifrar"):
     """Vigenère clásico con clave repetitiva."""
@@ -49,20 +47,13 @@ def vigenere_clasico(texto, clave, modo="cifrar"):
     return resultado
 
 
-# ============================================================
-#  AUTOCLAVE (VIGENÈRE DE CLAVE CONTINUA)
-# ============================================================
+# --- autoclave (vigenere de clave continua) ---
 
 def generar_autoclave(mensaje, clave):
     """
     Genera la clave extendida:
         clave_extendida = clave_inicial + mensaje_en_claro
     cortada al tamaño del mensaje.
-
-    Ejemplo:
-        mensaje = HOLAMUNDO  (9 letras)
-        clave   = KEY        (3 letras)
-        result  = KEYHOLAMU  (9 letras)
     """
     mensaje = limpiar_texto(mensaje)
     clave   = limpiar_texto(clave)
@@ -91,9 +82,6 @@ def descifrar_autoclave(mensaje_cifrado, clave):
     """
     Descifrado Autoclave.
     Reconstruye la clave letra a letra usando el texto ya descifrado.
-
-    Posición i < len(clave)  → usa clave_inicial[i]
-    Posición i >= len(clave) → usa resultado[i - len(clave)]
     """
     mensaje_cifrado = limpiar_texto(mensaje_cifrado)
     clave_inicial   = limpiar_texto(clave)
@@ -109,15 +97,7 @@ def descifrar_autoclave(mensaje_cifrado, clave):
     return resultado
 
 
-# ============================================================
-#  MÉTODO KASISKI (con sistema de votos por divisores)
-# ============================================================
-
-def mcd(a, b):
-    while b:
-        a, b = b, a % b
-    return a
-
+# --- metodo kasiski ---
 
 def factores(n):
     """Todos los divisores de n mayores que 1."""
@@ -194,9 +174,7 @@ def kasiski(texto_cifrado, tam_min=3, tam_max=5, max_longitud=20):
     }
 
 
-# ============================================================
-#  COMPARATIVA DE RESISTENCIA FRENTE A KASISKI
-# ============================================================
+# --- comparativa de resistencia frente a kasiski ---
 
 def comparativa_kasiski(mensaje, clave):
     """
@@ -213,7 +191,7 @@ def comparativa_kasiski(mensaje, clave):
     print(f"  Clave   : {clave}  (longitud real = {clave_len})")
     print()
 
-    # ── 1. Cifrar con ambos métodos ──────────────────────────
+    # cifrar con ambos metodos
     cifrado_clasico   = vigenere_clasico(mensaje, clave, "cifrar")
     cifrado_autoclave = cifrar_autoclave(mensaje, clave)
 
@@ -221,7 +199,7 @@ def comparativa_kasiski(mensaje, clave):
     print(f"  Cifrado Autoclave : {cifrado_autoclave[:55]}...")
     print()
 
-    # ── 2. Kasiski sobre Vigenère Clásico ───────────────────
+    # kasiski sobre vigenere clasico
     print("-" * 62)
     print("  KASISKI sobre VIGENÈRE CLÁSICO")
     print("-" * 62)
@@ -240,7 +218,7 @@ def comparativa_kasiski(mensaje, clave):
         print("  → Sin repeticiones. Kasiski no puede actuar.")
     print()
 
-    # ── 3. Kasiski sobre Autoclave ───────────────────────────
+    # kasiski sobre autoclave
     print("-" * 62)
     print("  KASISKI sobre AUTOCLAVE (Clave Continua)")
     print("-" * 62)
@@ -260,7 +238,7 @@ def comparativa_kasiski(mensaje, clave):
         print(f"  → Kasiski FALLA: no puede estimar la longitud de la clave.")
     print()
 
-    # ── 4. Conclusión ────────────────────────────────────────
+    # conclusion
     print("=" * 62)
     print("  CONCLUSIÓN")
     print("=" * 62)
@@ -285,9 +263,7 @@ def comparativa_kasiski(mensaje, clave):
     print("=" * 62)
 
 
-# ============================================================
-#  DEMO COMPLETA
-# ============================================================
+# --- demo ---
 
 if __name__ == "__main__":
 

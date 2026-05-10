@@ -1,17 +1,19 @@
 """
-mi_crypto_lib — Biblioteca de criptografía educativa
-=====================================================
-
-Módulos disponibles:
-    - teoria_numeros : Función φ de Euler, CRR, inversos multiplicativos
-
+mi_crypto_lib - Biblioteca de criptografia
 """
 
-__version__ = "1.0.5"
+__version__ = "1.0.10"
 __author__ = "Raúl"
 
-# Exponemos las funciones principales
-from .teoria_numeros import crr as calcular_crr, phi, inverso_euler, inverso_extendido
-from .teoria_numeros.ejercicio_rsa_base import generar_primo_seguro
-from .teoria_numeros.ataque_hill import Matriz, CifradoMatriz
-from .teoria_numeros.n_generico import factorizar, euler_phi
+# CRR y phi
+from .teoria_numeros import crr as calcular_crr, phi
+# RSA
+from .teoria_numeros import generar_primo_seguro
+# Factorizacion generica
+from .teoria_numeros import factorizar, euler_phi
+# Inversos
+from .teoria_numeros import inverso_euler, inverso_extendido
+# Autoclave
+from .cifrados_clasicos import cifrar_autoclave, descifrar_autoclave, kasiski
+# Hill
+from .cifrados_clasicos import Matriz, CifradoMatriz

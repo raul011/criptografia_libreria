@@ -1,14 +1,9 @@
 """
-teoria_numeros — Herramientas de teoría de números para criptografía
-====================================================================
-
-Funciones principales:
-    - phi(n)                : Función indicatriz de Euler φ(n)
-    - crr(n)                : Conjunto Reducido de Residuos módulo n
-    - inverso_euler(a, n)   : Inverso multiplicativo usando el teorema de Euler
-    - inverso_extendido(a, n) : Inverso multiplicativo usando Euclides extendido
+teoria_numeros - funciones de teoria de numeros
 """
 
-from .funciones_matematicas import phi, mcd
+from .utilidades import mcd, phi, es_primo
 from .crr import crr
+from .ejercicio_rsa_base import generar_primo_seguro
+from .n_generico import factorizar, euler_phi
 from .inversos import inverso_euler, inverso_multiplicativo as inverso_extendido

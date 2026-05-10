@@ -1,24 +1,30 @@
-"""
-Funcion indicatriz de Euler phi(n)
-Calcula la cantidad de enteros positivos menores que n
-que son coprimos con n.
-"""
+# Funciones matematicas compartidas
+
+def mcd(a, b):
+    """Maximo comun divisor (Euclides)."""
+    while b:
+        a, b = b, a % b
+    return a
+
 
 def es_primo(n):
-    """Verifica si un número es primo."""
+    """Verifica si n es primo."""
     if n < 2:
         return False
-    if n == 2:
+    if n in (2, 3):
         return True
-    if n % 2 == 0:
+    if n % 2 == 0 or n % 3 == 0:
         return False
-    for i in range(3, int(n**0.5) + 1, 2):
-        if n % i == 0:
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
             return False
+        i += 6
     return True
 
+
 def factorizar_entero(n):
-    """Factoriza un número entero en sus primos."""
+    """Devuelve lista con los factores primos de n."""
     factores = []
     divisor = 2
     temp = n
@@ -31,11 +37,9 @@ def factorizar_entero(n):
         factores.append(temp)
     return factores
 
+
 def phi(n):
-    """
-    Calcula phi(n) usando la formula:
-        phi(n) = n * prod(1 - 1/p) para cada primo p que divide a n
-    """
+    """Funcion indicatriz de Euler phi(n)."""
     if n <= 0:
         return 0
     if n == 1:
@@ -53,11 +57,9 @@ def phi(n):
 
     return resultado
 
+
 def phi_dos_primos(p, q):
-    """
-    Calcula phi(n) cuando n = p * q (caso RSA).
-        phi(n) = (p - 1) * (q - 1)
-    """
+    """phi(n) para n = p*q (caso RSA)."""
     if not es_primo(p) or not es_primo(q):
         raise ValueError("Ambos valores deben ser primos")
 
@@ -68,5 +70,4 @@ def phi_dos_primos(p, q):
         "n": n,
         "phi_n": resultado,
         "explicacion": "phi(" + str(n) + ") = (" + str(p) + "-1)(" + str(q) + "-1) = " + str(resultado),
-        "aplicacion": "Esta formula es fundamental en RSA"
     }

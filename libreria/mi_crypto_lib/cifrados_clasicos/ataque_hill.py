@@ -117,7 +117,7 @@ class Matriz:
         # 2. Eliminación Gauss-Jordan modular
         i = 0
         while i < n:
-            # 🔍 Buscar pivote: debe ser != 0 Y NO múltiplo de 3 (invertible en Z_27)
+            # Buscar pivote: debe ser != 0 y no multiplo de 3 (invertible en Z_27)
             pivote_fila = -1
             k = i
             while k < n:

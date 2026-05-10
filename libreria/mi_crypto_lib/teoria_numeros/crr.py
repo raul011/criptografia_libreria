@@ -1,6 +1,5 @@
 
-from .funciones_matematicas.mcd import mcd
-from .funciones_matematicas.phi import phi
+from .utilidades import mcd, phi
 
 def crr(n):
     if n < 2:

@@ -1,3 +1,6 @@
+from .utilidades import mcd
+
+
 def factorizar(n: int) -> dict:
     factores = {}
     temp = n
@@ -26,10 +29,6 @@ def factorizar(n: int) -> dict:
     
     return factores
 
-def mcd(a: int, b: int) -> int:
-    while b != 0:
-        a, b = b, a % b
-    return a
 
 def euler_phi(n: int) -> int:
     if n <= 0:
